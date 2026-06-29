@@ -1,4 +1,4 @@
-# 🌋 Guardian Sísmico VE <img src="https://lipis.dev" width="30" alt="Venezuela Flag">
+# 🌋 Guardian Sísmico VE :venezuela:
 
 Bot de Telegram diseñado para emergencias sísmicas y de infraestructura en Venezuela.
 Optimizado para funcionar con **señal móvil débil, baja batería y usuarios sin experiencia técnica**.
