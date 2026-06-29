@@ -1,0 +1,56 @@
+name: BuscaVenezuela Alerter + SOS Summary
+
+on:
+  # Corre automaticamente cada 15 minutos
+  schedule:
+    - cron: '*/15 * * * *'
+  # Tambien se puede ejecutar manualmente desde la pestana Actions
+  workflow_dispatch:
+
+jobs:
+  alerter:
+    name: Ejecutar alerter.py
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Restaurar base de datos (cache entre runs)
+        uses: actions/cache@v4
+        with:
+          path: buscavenezuela.db
+          key: buscavenezuela-db-${{ github.run_id }}
+          restore-keys: |
+            buscavenezuela-db-
+
+      - name: Ejecutar alerter (busqueda de desaparecidos)
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          RESCUE_CHANNEL_ID: ${{ secrets.RESCUE_CHANNEL_ID }}
+          DB_PATH: buscavenezuela.db
+        run: python alerter.py
+
+      - name: Resumen SOS al canal de rescatistas
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          RESCUE_CHANNEL_ID: ${{ secrets.RESCUE_CHANNEL_ID }}
+          DB_PATH: buscavenezuela.db
+        # Sale silenciosamente si no hay reportes activos o falta RESCUE_CHANNEL_ID
+        run: python alerter.py --sos-summary || true
+
+      - name: Guardar base de datos actualizada
+        uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: buscavenezuela.db
+          key: buscavenezuela-db-${{ github.run_id }}

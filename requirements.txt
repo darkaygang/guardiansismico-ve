@@ -1,0 +1,6 @@
+python-telegram-bot>=22.0
+requests>=2.32.0
+beautifulsoup4==4.12.3
+python-dotenv==1.0.0
+cachetools==5.3.3
+urllib3>=2.2.3
