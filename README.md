@@ -1,28 +1,28 @@
-# Guardian Sismico VE
+# 🌋 Guardian Sísmico VE
 
-Bot de Telegram para emergencias sismicas en Venezuela.
-Funciona con señal debil, baja bateria y usuarios sin experiencia tecnica.
+Bot de Telegram diseñado para emergencias sísmicas y de infraestructura en Venezuela.
+Optimizado para funcionar con **señal móvil débil, baja batería y usuarios sin experiencia técnica**.
 
-## Que hace
+## 🛟 ¿Qué hace?
 
-- Boton de panico: envia ubicacion GPS o referencia de texto a rescatistas
-- Instrucciones durante el sismo: respuesta instantanea
-- Directorio de emergencias por estado venezolano
-- Boton a salvo: notifica que la emergencia paso
-- Ping de vida: genera mensaje copiable para WhatsApp o SMS
-- Guia de preparacion sismica
-- Busqueda de familiares desaparecidos (funcionalidad BuscaVenezuela)
+- 🚨 **Botón de pánico:** Envía ubicación GPS exacta o referencia de texto a grupos de rescatistas.
+- ⚠️ **Instrucciones durante el sismo:** Respuesta instantánea, directa y al grano.
+- 📞 **Directorio de emergencias:** Números locales filtrados por estado venezolano.
+- ✅ **Botón de "A salvo":** Notifica que la emergencia pasó para liberar recursos de rescate.
+- 📍 **Ping de vida:** Genera un mensaje pre-armado con coordenadas y hora para copiar y pegar en WhatsApp o SMS.
+- ℹ️ **Guía de preparación:** Tips rápidos de prevención y supervivencia.
+- 🔍 **Búsqueda (BuscaVenezuela):** Funcionalidad integrada para rastreo de familiares desaparecidos.
 
-## Usar el bot
+## 📲 Usar el bot
 
-Busca tu bot en Telegram y toca /start
+Busca tu bot en Telegram y simplemente toca `/start` para desplegar el menú principal.
 
-## Instalar y correr
+## 🛠️ Instalar y correr
 
-Requisitos: Python 3.10+, bot de Telegram via @BotFather, grupo/canal de rescatistas
+**Requisitos:** Python 3.10+, un bot de Telegram (vía `@BotFather`), y un grupo/canal privado de rescatistas.
 
 ```bash
-git clone https://github.com/TU_USUARIO/guardiansismico-ve
+git clone [https://github.com/TU_USUARIO/guardiansismico-ve](https://github.com/TU_USUARIO/guardiansismico-ve)
 cd guardiansismico-ve
 python -m venv .venv
 source .venv/bin/activate      # Linux/Mac
@@ -31,66 +31,9 @@ pip install -r requirements.txt
 cp .env.example .env
 # Editar .env con tu BOT_TOKEN y RESCUE_CHANNEL_ID
 python bot.py
-```
-
-## Variables de entorno
-
-Ver `.env.example` para la lista completa.
-
-| Variable | Descripcion | Requerida |
-|---|---|---|
-| BOT_TOKEN | Token de @BotFather | Si |
-| RESCUE_CHANNEL_ID | ID negativo del canal de rescatistas | Recomendada |
-| DB_PATH | Ruta a la base de datos SQLite | No (default: buscavenezuela.db) |
-| ENVIRONMENT | development o production | No (default: development) |
-| WEBHOOK_URL | URL publica HTTPS para produccion | Solo en produccion |
-| WEBHOOK_PORT | Puerto del webhook | No (default: 8443) |
-| ADMIN_IDS | IDs de Telegram con acceso a /sos_pendientes | No |
-
-## Comandos del bot
-
-| Comando | Quien lo usa | Descripcion |
-|---|---|---|
-| /start | Usuario | Menu principal |
-| /sos_pendientes | Rescatistas/Admins | Lista de SOS activos |
-| /resolver_ID | Rescatistas | Marca SOS como atendido |
-| /resolver ID | Rescatistas | Alternativa con espacio |
-| /vigilar | Usuario | Inicia busqueda de familiar |
-
-## Contribuir
-
-1. Haz fork del repositorio
-2. Crea una rama: `git checkout -b mi-mejora`
-3. Abre un Pull Request
-
-Mejoras que necesitamos:
-- Mas contactos de emergencia por municipio
-- Reverse geocoding local sin API externa
-- Integracion con RSS de FUNVISIS
-- Traduccion al ingles de la documentacion
-- Tests automatizados para flujos criticos
-
-## Arquitectura
-
-```
-bot.py       — Conversaciones Telegram (python-telegram-bot v22)
-db.py        — SQLite con WAL mode y migraciones idempotentes
-middleware.py — Rate limiting y throttle
-matcher.py   — Fuzzy matching para busqueda de nombres
-alerter.py   — Jobs en segundo plano y canal de rescatistas
-```
-
-## Capacidad
-
-Con WAL mode y asyncio queue, maneja 1000+ usuarios concurrentes
-en un VPS de 1GB RAM. Probado con el stack de Guardian Sismico VE.
-
-Caracteristicas de resiliencia:
-- Retry automatico al canal de rescatistas (3 intentos, backoff exponencial)
-- Flujo SOS sin GPS: acepta descripcion textual de ubicacion
-- Rate limiting para prevenir spam en flujos de emergencia
-- Mensajes ultra-ligeros para señal debil o datos limitados
-
-## Licencia
-
-MIT
+⚙️ Variables de entornoRevisa el archivo .env.example para la lista completa.VariableDescripciónRequeridaBOT_TOKENToken otorgado por @BotFatherSíRESCUE_CHANNEL_IDID (negativo) del canal/grupo de rescatistasRecomendadaDB_PATHRuta a la base de datos SQLiteNo (default: buscavenezuela.db)ENVIRONMENTdevelopment o productionNo (default: development)WEBHOOK_URLURL pública HTTPS para producciónSolo en producciónWEBHOOK_PORTPuerto del webhookNo (default: 8443)ADMIN_IDSIDs de Telegram con acceso a /sos_pendientesNo⌨️ Comandos del botComandoQuién lo usaDescripción/startUsuarioDespliega el menú principal/sos_pendientesRescatistas/AdminsLista de reportes SOS activos en tiempo real/resolver_IDRescatistasMarca un SOS como atendido directamente desde el grupo/resolver IDRescatistasAlternativa con espacio/vigilarUsuarioInicia búsqueda de un familiar desaparecido🤝 Código Abierto y Cómo Contribuir¿Es Open Source? ¡Totalmente! 🔓Este código es 100% libre. Puedes clonarlo, usarlo, modificarlo y adaptarlo para tu comunidad. Si tienes conocimientos de programación y quieres añadirle nuevas funciones, ¡todas las ideas y mejoras son más que bienvenidas!Haz fork del repositorio.Crea una rama nueva: git checkout -b mi-mejoraTrabaja tu magia y abre un Pull Request.Ideas en las que nos puedes ayudar:📍 Más contactos de emergencia detallados por municipio.🗺️ Reverse geocoding local sin depender de APIs externas.📡 Integración con alertas RSS oficiales de FUNVISIS.🇺🇸 Traducción al inglés de la documentación.🧪 Tests automatizados para los flujos críticos.🏗️ ArquitecturaPlaintextbot.py         — Conversaciones y flujos Telegram (python-telegram-bot v22)
+db.py          — SQLite optimizado con WAL mode y migraciones idempotentes
+middleware.py  — Rate limiting y anti-spam (throttle)
+matcher.py     — Fuzzy matching para búsqueda difusa de nombres
+alerter.py     — Jobs en segundo plano y conexión con el canal de rescatistas
+⚡ Capacidad y ResilienciaCon WAL mode activado en SQLite y el uso de asyncio queues, el bot está diseñado para manejar 1000+ usuarios concurrentes corriendo en un VPS modesto de tan solo 1GB de RAM.Características de resiliencia:Retry automático: 3 intentos con backoff exponencial si la conexión con los servidores falla.Flujo SOS sin GPS: Si la señal colapsa, acepta descripciones textuales de ubicación.Rate limiting: Previene spam o ataques DDoS en el botón de pánico.Ultra-ligero: Los mensajes se fragmentan inteligentemente para fluir a través de redes inestables o conexiones 2G.👥 CréditosDesarrollado y estructurado inicialmente por Darkay.El objetivo de este repositorio no es la gloria personal, sino aportar una herramienta real y funcional a la comunidad. El verdadero crédito es para todos los voluntarios, rescatistas y desarrolladores que trabajan en el terreno para proteger a otros.📄 LicenciaMITAunque el sol se oculte, la esperanza es la luz que nos guía a un nuevo amanecer.
