@@ -33,7 +33,6 @@ cp .env.example .env
 python bot.py
 ```
 
-<<<<<<< HEAD
 ## ⚙️ Variables de entorno
 
 Revisa el archivo `.env.example` para la lista completa.
@@ -78,14 +77,10 @@ Este código es 100% libre. Puedes clonarlo, usarlo, modificarlo y adaptarlo par
 
 ```text
 bot.py         — Conversaciones y flujos Telegram (python-telegram-bot v22)
-=======
-⚙️ Variables de entornoRevisa el archivo .env.example para la lista completa.VariableDescripciónRequeridaBOT_TOKENToken otorgado por @BotFatherSíRESCUE_CHANNEL_IDID (negativo) del canal/grupo de rescatistasRecomendadaDB_PATHRuta a la base de datos SQLiteNo (default: buscavenezuela.db)ENVIRONMENTdevelopment o productionNo (default: development)WEBHOOK_URLURL pública HTTPS para producciónSolo en producciónWEBHOOK_PORTPuerto del webhookNo (default: 8443)ADMIN_IDSIDs de Telegram con acceso a /sos_pendientesNo⌨️ Comandos del botComandoQuién lo usaDescripción/startUsuarioDespliega el menú principal/sos_pendientesRescatistas/AdminsLista de reportes SOS activos en tiempo real/resolver_IDRescatistasMarca un SOS como atendido directamente desde el grupo/resolver IDRescatistasAlternativa con espacio/vigilarUsuarioInicia búsqueda de un familiar desaparecido🤝 Código Abierto y Cómo Contribuir¿Es Open Source? ¡Totalmente! 🔓Este código es 100% libre. Puedes clonarlo, usarlo, modificarlo y adaptarlo para tu comunidad. Si tienes conocimientos de programación y quieres añadirle nuevas funciones, ¡todas las ideas y mejoras son más que bienvenidas!Haz fork del repositorio.Crea una rama nueva: git checkout -b mi-mejoraTrabaja tu magia y abre un Pull Request.Ideas en las que nos puedes ayudar:📍 Más contactos de emergencia detallados por municipio.🗺️ Reverse geocoding local sin depender de APIs externas.📡 Integración con alertas RSS oficiales de FUNVISIS.🇺🇸 Traducción al inglés de la documentación.🧪 Tests automatizados para los flujos críticos.🏗️ ArquitecturaPlaintextbot.py         — Conversaciones y flujos Telegram (python-telegram-bot v22)
->>>>>>> 2897e9fa5f347bb797f99bb3afb31a9db10e9c58
 db.py          — SQLite optimizado con WAL mode y migraciones idempotentes
 middleware.py  — Rate limiting y anti-spam (throttle)
 matcher.py     — Fuzzy matching para búsqueda difusa de nombres
 alerter.py     — Jobs en segundo plano y conexión con el canal de rescatistas
-<<<<<<< HEAD
 ```
 
 ## ⚡ Capacidad y Resiliencia
@@ -109,6 +104,3 @@ MIT
 
 ---
 *Aunque el sol se oculte, la esperanza es la luz que nos guía a un nuevo amanecer.*
-=======
-⚡ Capacidad y ResilienciaCon WAL mode activado en SQLite y el uso de asyncio queues, el bot está diseñado para manejar 1000+ usuarios concurrentes corriendo en un VPS modesto de tan solo 1GB de RAM.Características de resiliencia:Retry automático: 3 intentos con backoff exponencial si la conexión con los servidores falla.Flujo SOS sin GPS: Si la señal colapsa, acepta descripciones textuales de ubicación.Rate limiting: Previene spam o ataques DDoS en el botón de pánico.Ultra-ligero: Los mensajes se fragmentan inteligentemente para fluir a través de redes inestables o conexiones 2G.👥 CréditosDesarrollado y estructurado inicialmente por Darkay.El objetivo de este repositorio no es la gloria personal, sino aportar una herramienta real y funcional a la comunidad. El verdadero crédito es para todos los voluntarios, rescatistas y desarrolladores que trabajan en el terreno para proteger a otros.📄 LicenciaMITAunque el sol se oculte, la esperanza es la luz que nos guía a un nuevo amanecer.
->>>>>>> 2897e9fa5f347bb797f99bb3afb31a9db10e9c58
